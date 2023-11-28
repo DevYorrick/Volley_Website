@@ -1,0 +1,103 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'website/css/style.css' %}" type="application/css">
+	<title> Wednesday</title>
+	<link rel="stylesheet" type="application/css" href="{% static 'website/css/mobile.css' %}">
+	<script src="{% static 'website/js/mobile.js' %}" type="application/json"></script>
+	<link rel="icon" type="image/x-icon" href="{% static 'website/images/favicon.ico.png' %}">
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div id="navigation">
+				<span id="mobile-navigation">&nbsp;</span>
+				<a href="home" class="logo"><img src="{% static 'website/images/logo.png' %}" alt=""></a>
+				<ul id="menu">
+					<li>
+						<a href="home">Home</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+					<li>
+						<a href="volleyball">volleyball</a>
+						<ul>
+							<li>
+								<a href="wednesday">Wednesday</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="attendance">attendance list</a>
+						<ul>
+							<li>
+								<a href="monday">Monday</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="contact">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="body" style="text-align: center;">
+			<div>
+			<h5>Wednesday test attendance</h5>
+			<h6><form method="POST" action="/wednesday_test">
+				{% csrf_token %}
+				{{form}} 
+			<input type="submit" name="Create Player_test">
+			</form></h6> <br><br><br>
+
+			{% if player.day_test == "Monday"  %}
+		
+			<p>It worked</p>
+			
+			{%endif%}
+			<p>Went wrong</p>
+
+
+			<table class="center">
+				<tr>
+					<td> Number </td>
+					<td> Name </td>
+					<td> Day </td>
+					<td> Can't make it?</td>
+				</tr>
+				{% for player_test in players_test %}
+				<tr class="active-row">    
+					<th class="nr"> </th>
+					<th> {{player.name_test}} </th>
+					<th> {{player.day_test}}</th>
+					<th><a href="{% url 'deleteplayer' player_test.pk %}"> Delete name</a> </th>  
+				</tr>
+				{%endfor%} 
+			</table>
+		
+		</div>
+			<script type="text/javascript">
+					var a = document.getElementsByClassName("nr");
+				for (var i = 0; i < a.length; i++) {
+					a[i].innerHTML = (i+1)+".";
+				}
+			</script>
+		</div>
+		<div id="footer">
+			<div>
+				<div class="connect">
+					<a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>
+					<a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">facebook</a>
+					<a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
+					<a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
+				</div>
+				<p>&copy; Made by Yorrick Reuser</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
