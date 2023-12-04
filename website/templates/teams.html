@@ -1,0 +1,39 @@
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}" />
+{% if team1 %} 
+    <ol>
+    {% for member in team1 %}
+        <li>{{ member }}</li>
+    {% endfor %}
+    </ol> 
+{% else %}
+    <p>No teams are available.</p>
+{% endif %}
+{% if team2 %} 
+    <ol>
+    {% for member in team2 %}
+        <li>{{ member }}</li>
+    {% endfor %}
+    </ol> 
+{% else %}
+    <p>No teams are available.</p>
+{% endif %}
+{% if team3 %} 
+    <ol>
+    {% for member in team3 %}
+        <li>{{ member }}</li>
+    {% endfor %}
+    </ol> 
+{% else %}
+    <p>No teams are available.</p>
+{% endif %}
+
+{% block content %}
+  				<h2>Sign Up</h2>
+				<form method="post" enctype="multipart/form-data" autocomplete="off">
+				{% csrf_token %}
+				{{ user_form.as_p }}
+				{{ profile_form.as_p }}
+				<button type="submit">Sign Up</button>
+				</form>
+			{% endblock %}
