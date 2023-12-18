@@ -4,6 +4,7 @@ from django.urls import path, include
 from django.contrib import admin
 
 urlpatterns = [
+    path('index', views.index, name="home"),
     path('home', views.home, name="home"),
     path('', views.home, name="home"),
     path('signup', views.signup, name='signup'),
