@@ -1,13 +1,19 @@
-/* Website template by freewebsitetemplates.com */
-body {
+* {
 	margin: 0;
 	padding: 0;
-	position: relative;
-	width: auto;
-}
-body #page {
+	box-sizing: border-box;
+  }
+body {
+	font-family: cursive;
+	height: 100%; /* Make body take full height of viewport */
+	background-image: url('{% static "website/images/everyone.jpg" %}');
+	background-size: cover;
+    background-position: center;
+	overflow: auto;
+  }
+#page {
 	margin: 0;
-	overflow: hidden;
+	overflow: auto;
 	padding: 0;
 	width: auto;
 }
@@ -32,35 +38,35 @@ img {
 #header div {
 	margin: 0 auto;
     max-width: 1240px;
-    min-height: 227px;
+    min-height: 113.5px;
     padding: 0 10px;
 }
 #header div a.logo {
 	display: block;
     float: left;
-    height: 106px;
-    margin: 44px 0 0;
+    height: 23px;
+    margin: 38px 0 0;
     padding: 0;
-    width: 320px;
+    width: 80px;
 }
 #header div a.logo img {
 	display: block;
 	margin: 0;
+	width: 100%;
 	padding: 0;
 	width: auto;
 }
 #header div ul {
-	display: block;
     float: right;
-    list-style: none outside none;
+    list-style: inside;
     margin: 0 auto;
     max-width: 1001px;
-    padding: 102px 0 20px;
+    padding: 51px 0 10px;
     text-align: center;
 }
 #header div ul li {
 	display: inline-block;
-	margin: 0 0 0 37px;
+	margin: 0 0 0 16px;
 	padding: 0;
 	width: auto;
 }
@@ -76,42 +82,65 @@ img {
 	text-transform: uppercase;
 	width: auto;
 }
-#header div ul li.selected a, #header div ul li.selected a:hover {
+#header div ul li.selected a, 
+#header div ul li.selected a:hover {
 	color: #fb416f;
 }
 #header div ul li a:hover {
 	color: #db1b53;
+	display: flexbox;
 }
 #header div ul li ul {
-	display: none;
+	display: block;
 }
 #header span#mobile-navigation, #header span#mobile-submenu, #header div ul li ul {
 	display: none;
 }
 #menu ul {
-	display: none;
+	display: block;
 	position: absolute;
 	background-color: #000000;
 	border: 1px solid #000000;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    left: 0;
     z-index: 1;
 }
 #menu li {
 	position: relative;
 }
 #menu li:hover ul {
-	display: block;
+    display: block;
+	min-height: 50px;
+	max-height: 140px;
+}
+#menu li:hover ul li {
+	display: grid;
+	padding: 8.5px 10px 10px 10px;
+	top: -50px;
+	bottom: auto;
+}
+#menu li ul {
+    display: block;
+    position: absolute;
+    left: 0;
+	bottom: auto;
+    width: 100%;
+}
+#menu li li {
+    width: 100%;
+    text-align: left;
 }
 #menu ul li {
 	display: block;
-	padding: 8px 10px;
+	padding-top: 300px;
+}
+#menu li ul li {
+    margin: 0;
 }
 #menu ul ul {
-	/* Adjust the position of the nested dropdown */
-	position: absolute;
-	top: 0;
-	left: 0;
+    position: absolute;
+    left: 100%;
+    top: 100%; /* Adjust this value to reduce the empty space */
 }
 #menu ul ul li {
 	/* Add space between nested items */
@@ -120,20 +149,36 @@ img {
 /*----------------------------------------body-home-styles---------------------------------------*/
 #body {
 	border-top: 2px solid #252525;
+	flex: 1;
 	margin: 0;
 	overflow: auto;
 	padding: 0;
 	position: relative;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	top: 100;
 	left: 100;
 	bottom:100;
 	min-width: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 	background-repeat: no-repeat;
 	background-size: contain;
 	cursor: url(../images/favicon.ico.png) 0 100, auto;
+}
+#body p {
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 8px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    line-height: 24px; /* Adjust line height as needed */
+    margin: 0 auto 16px;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+#body.home p{
+	color: #000000;
 }
 .text-block {
 	margin: 0 auto;
@@ -145,7 +190,8 @@ img {
 	padding-top: 30px;
   }
 html {    
-    background: url(../images/bg_home.png) no-repeat center fixed;     
+    background: url(../images/bg_home.png) no-repeat center fixed;
+	zoom: normal;
     background-size: cover;
 }
 .center {
@@ -162,19 +208,87 @@ background {
 	left: 0;
   }
   
-  @media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1024px) { 
 	img.bg {
 	  left: 50%;
 	  margin-left: -512px;   /* 50% */
 	}
-  }
-#body.home div {
-	background: none;
-	margin: 0;
-	max-width: none;
-	padding: 0 0 54px;
-	width: 100%;
 }
+.flex-item box2{
+	width: 1000px;
+}
+#body.home div div {
+	background-color: #f8f8f8;
+}
+#body.home div div img {
+	width: 100%;
+	padding-top: 0;
+	padding-bottom: 20px;
+	margin: 0;
+}
+#body.home div div div img {
+	width: 200px;
+	padding-bottom: 0;
+}
+#body.home div {
+	overflow: hidden;
+	background-color: #f0f0f0;
+	max-width: none;
+	padding: 0 0 0 0px;
+	height: 100%;
+	width: 100%;
+  }
+  
+  .flex-container {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .flex-item {
+	box-sizing: border-box;
+	background-color: #000000;
+	height: 300px !important;
+  }  
+	.box2 {
+		height: 50px;
+	}
+  
+  .box3,
+  .box4 {
+	display: flex;
+	height: 100px;
+	margin: 20 0 20px !important;
+  }
+  .box3 div {
+	background-color: #fff !important;
+	height: auto !important;
+  }
+  .box3-left {
+	padding-left: 150px !important;
+  }
+  .box3-right {
+	width: 3000px !important;
+  }
+  .box3-left img {
+	width: 200px;
+	height: 300px;
+  }
+  .box4 div {
+	background-color: #f0f0f0 !important;
+	height: auto !important;
+	display: inline-block;
+  }
+  .box4-right img {
+	width: 10px;
+	height: auto;
+	display: inline-block !important;
+  }
+  /* Add any additional styling for your text content */
+  
+  .box5 {
+	background-color: #fff !important;
+  }
+
 #body.home div.header div {
 	background: none;
 	margin: 0 auto;
@@ -254,6 +368,63 @@ background {
 	max-width: 960px;
 	padding: 54px 0 86px;
 }
+#body div h1,
+#body div h2,
+#body div h3,
+#body div h4 {
+    font-family: 'Arial Black', Arial, sans-serif;
+    text-transform: uppercase;
+}
+#body h1 {
+    color: #000000;
+    font-size: 40px;
+    font-weight: normal;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+}
+#body div h1 {
+	background: url(../images/bg-border2.gif) no-repeat center bottom;
+	color: #FC416F;
+	font-family: 'Arial Black';
+	font-size: 40px;
+	font-weight: normal;
+	line-height: 40px;
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+#body div h2 {
+    color: #FC416F;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 0 0 15px;
+    padding: 0;
+    text-align: center;
+    text-transform: none;
+}
+#body div h3 {
+    background: url(../images/bg-border1.gif) no-repeat center top;
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    line-height: 48px;
+    margin: 0 auto 15px;
+    padding: 18px 0 0;
+    text-align: center;
+    width: 100%;
+}
+#body div h3 span {
+	background: url(../images/bg-border1.gif) no-repeat center bottom;
+	display: block;
+	margin: 0;
+	padding: 0 0 11px;
+	width: auto;
+}
 #body.home div.body div h1 {
 	background: url(../images/bg-border1.gif) no-repeat center bottom;
 	color: #FFFFFF;
@@ -265,6 +436,29 @@ background {
 	padding: 0 0 50px;
 	text-align: center;
 	text-transform: uppercase;
+}
+#body div h4 {
+	background: url(../images/bg-border1.gif) no-repeat center bottom;
+	color: #FFFFFF;
+	font-family: 'Arial Black';
+	font-size: 30px;
+	font-weight: normal;
+	line-height: 30px;
+	margin: 0;
+	padding: 14px 0 29px;
+	text-align: center;
+	text-transform: uppercase;
+}
+#body div h6 {
+	color: #ffffff;
+	font-family: arial;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 20px;
+	margin: 0 0 15px;
+	padding: 0;
+	text-align: center;
+	text-transform: none;
 }
 #body.home div.body div p {
 	background: url(../images/bg-border1.gif) no-repeat center bottom;
@@ -314,31 +508,34 @@ background {
 }
 /*----------------------------------------body-styles---------------------------------------*/
 #body div {
-	background: url(../images/bg-transparent2.png) repeat;
-	margin: 0 auto;
-	max-width: 960px;
-	overflow: hidden;
-	padding: 58px 0 4px;
+    position: relative;
+    margin: 0 auto;
+    max-width: 960px;
+	height: auto;
+    overflow: hidden;
+    padding: 58px 0 4px;
+    background: #0303037c;
+}
+#body div div {
+    background: none;
+}
+#body div div img {
+	display: inline-block;
+	align-items: center;
+	justify-content: center;
+	margin: 40px;
+	padding-top: -100px;
+	width: auto;
 }
 #body.running div {
 	padding: 58px 0 161px;
 }
-#body div h1 {
-	background: url(../images/bg-border2.gif) no-repeat center bottom;
-	color: #FC416F;
-	font-family: 'Arial Black';
-	font-size: 40px;
-	font-weight: normal;
-	line-height: 40px;
-	margin: 0;
-	padding: 0 0 20px;
-	text-align: center;
-	text-transform: uppercase;
-}
 #body div img {
 	display: block;
-	margin: 68px auto 47px;
-	padding: 0;
+	align-items: center;
+	justify-content: center;
+	margin: 10px auto auto;
+	padding-top: 50px;
 	width: auto;
 }
 #body.runningsinglepost div img {
@@ -356,18 +553,28 @@ background {
 #body.runningsinglepost div p {
 	margin: 0 auto 10px;
 }
+.messages {
+    list-style: none;
+    padding: 0;
+}
+.messages li {
+    color: #FFFFFF;
+    background-color: #FC416F;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 #body div p {
-	color: #FFFFFF;
+	color: #ffffff;
 	display: block;
 	font-family: sans-serif;
-	font-size: 30px;
+	font-size: 15px;
 	font-weight: normal;
 	letter-spacing: 0.01em;
 	line-height: 48px;
 	margin: 0 auto 37px;
 	padding: 0;
 	text-align: center;
-	width: 765px;
 }
 #body div p span {
 	color: #FFFFFF;
@@ -401,28 +608,6 @@ background {
 #body div p a:hover {
 	color: #fc416f;
 }
-#body div h2 {
-	color: #000000;
-	font-family: arial;
-	font-size: 20px;
-	font-weight: normal;
-	line-height: 20px;
-	margin: 0 0 15px;
-	padding: 0;
-	text-align: center;
-	text-transform: none;
-}
-#body div h6 {
-	color: #ffffff;
-	font-family: arial;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 20px;
-	margin: 0 0 15px;
-	padding: 0;
-	text-align: center;
-	text-transform: none;
-}
 #body div ul.gallery {
 	display: inline-block;
 	list-style: none outside none;
@@ -451,32 +636,13 @@ background {
 	padding: 0;
 	width: auto;
 }
-#body div h3 {
-	background: url(../images/bg-border1.gif) no-repeat center top;
-	color: #FFFFFF;
-	display: block;
-	font-family: Arial;
-	font-size: 25px;
-	font-weight: bold;
-	letter-spacing: 0.02em;
-	line-height: 48px;
-	margin: 0 auto 15px;
-	padding: 18px 0 0;
-	text-align: center;
-	width: 611px;
-}
-#body div h3 span {
-	background: url(../images/bg-border1.gif) no-repeat center bottom;
-	display: block;
-	margin: 0;
-	padding: 0 0 11px;
-	width: auto;
-}
+
 #body.running div p {
 	margin: 0 auto 48px;
 }
 #body div ul {
 	display: inline-block;
+	color:#f3f3f3;
 	list-style: none outside none;
 	margin: 0;
 	max-width: 780px;
@@ -737,10 +903,51 @@ background {
 #body.blogsinglepost div div p a:hover {
 	color: #fc416f;
 }
+button {
+    background-color: #F86282; /* Volleyball theme color */
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #D74E6E; /* Darker shade on hover */
+}
+.login-signup-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Send the background image to the back */
+}
+.transparent-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha (last value) for transparency */
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+	min-height: 300px;
+	align-items: center;
+    justify-content: flex-start;
+	flex-direction: row-reverse;
+    width: 60%; /* Adjust the width of the transparent box */
+}
+.form-container {
+    width: 45%; /* Adjust the width of each form container */
+}
 /*----------------------------------------footer-styles---------------------------------------*/
 #footer {
 	background-color: #111111;
-	margin: 0;
+	margin-top: auto;
 	min-height: 122px;
 	padding: 0;
 	width: 100%;
@@ -818,21 +1025,42 @@ table {
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 800px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	overflow: hidden;
 }
 table tr {
     background-color: #db1b53;
     color: #ffffff;
     text-align: center;
 }
-table th,
-table td {
+table, th, td {
     padding: 12px 15px;
 }
-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
 
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+th {
+    background-color: #db1b53;
+    color: #FFFFFF;
+
+}
+td:nth-child(2) {
+    border-top: 1px solid #000000; /* Black border below */
+	border-left: 1px solid #000000; /* Black border below */
+}
+td:nth-child(3) {
+    border-top: 1px solid #000000; /* Black border below */
+}
+td:nth-child(4) {
+    border-top: 1px solid #000000; /* Black border below */
+	border-right: 1px solid #000000; /* Black border below */
+}
+td:first-child {
+    border-right: 1px solid #000000; /* Black border to the right */
+}
 table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
@@ -843,4 +1071,63 @@ table tbody tr:last-of-type {
 table tbody tr.active-row {
     font-weight: bold;
     color: #000201;
+}
+/*
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+	  transform: translateY(0);
+	}
+	40% {
+	  transform: translateY(-300px);
+	}
+	60% {
+	  transform: translateY(-300px);
+	}
+  }
+.animate bounce {
+	animation: scale 1.5s both;
+	animation-timing-function: linear;
+  }
+#volleyball img {
+    animation: bounce 2s infinite; 
+    display: block; 
+    max-width: 5%; 
+	}
+*/
+
+.delete-link {
+    display: inline-block;
+    background-color: #F86282; /* Volleyball theme color */
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Add more styling as needed */
+}
+.delete-link:hover {
+    background-color: #D74E6E; /* Darker shade on hover */
+}
+#body div ol {
+    list-style: none;
+	color: #D74E6E;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgba(129, 97, 97, 0.2); /* Light gray with some transparency */
+    padding: 10px;
+    border-radius: 5px;
+}
+#body div ol li {
+    background-color: #FC416F;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+#body div ol li:hover {
+    background-color: #D74E6E;
+}
+ul.no-bullets {
+    list-style-type: none;
 }
