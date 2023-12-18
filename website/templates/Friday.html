@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} Friday Attendance List{% endblock %}
+{% block content %}
+{% load static %}  
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if Friday %}
+                {% if user.is_staff %}
+                    <form method="post" action="{% url 'delete_all_attendance' selected_day='Friday' %}">
+                        {% csrf_token %}
+                        <center>
+                            <button type="submit">Delete All Friday Attendees</button>
+                        </center>
+                    </form>
+                {% endif %}
+                <table class="center">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Day</th>
+                            <th>Can't make it?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendees in Friday_list %}
+                            <tr class="active-row">    
+                                <th class="dr"> </th>
+                                <td>{{ attendees.user.username }}</td>
+                                <td>{{ attendees.selected_day }}</td>
+                                <td>
+                                    <a href="{% url 'delete_attendance' attendees.id %}" class="delete-link">Delete Your Name</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No attendees for {{ selected_day }}.</p>
+            {% endif %}
+            {% if Friday_waiting %}
+                <table class="center">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Day</th>
+                            <th>Can't make it?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for attendees in Friday_waiting %}
+                            <tr class="active-row">    
+                                <th class="dr"> </th>
+                                <td>{{ attendees.user.username }}</td>
+                                <td>{{ attendees.selected_day }}</td>
+                                <td><a href="{% url 'delete_attendance' attendees.id %}">Delete your name</a></td>  <!-- Add a link to the delete view -->  
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            <script type="text/javascript">
+                    var a = document.getElementsByClassName("nr");
+                for (var i = 0; i < a.length; i++) {
+                    a[i].innerHTML = (i+1)+".";
+                }
+            </script>
+            <script type="text/javascript">
+                    var a = document.getElementsByClassName("dr");
+                for (var i = 0; i < a.length; i++) {
+                    a[i].innerHTML = (i+1)+".";
+                }
+            </script>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

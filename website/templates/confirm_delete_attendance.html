@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Confirm Deletion</h2>
+  <p>Are you sure you want to delete the attendance for {{ attendance.selected_day }}?</p>
+  
+  <form method="post" action="{% url 'delete_attendance' attendance.id %}">
+    {% csrf_token %}
+    <button type="submit">Confirm Deletion</button>
+    <a href="{% url 'attendance_list' selected_day=attendance.selected_day %}">Cancel</a>
+  </form>
+{% endblock %}

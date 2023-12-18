@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Select which day {% endblock %}
+{% block content %}
+{% load static %}
+				<h1>Attendance list</h1>
+				<ul>
+					<li>
+						<img src="{% static 'website/images/blog-image1.png' %}" alt="">
+						<div>
+							<h1>Signing up, what you need to know</h1>
+							<p>The volleyball sessions are held 2 times per week. The time slots for these sessions are on Mondays from 19:30 till 22:00 and wednesday from 19:30 till 22:00. You are free to leave whenever you please but please show up before 20:00 since that is the time we will finish warming up and actual start playing. <br><br> Are you new and not sure what to expect? As for what you need to bring, Sports clothes. Knee pads and/or arm sleeves are optional. We like to focus on a positive vibe with music and where everyone is welcome. Also no previous experience with volleyball is required as we often get students without any experience. Everyone is welcome to learn while having fun but we do ask to take it serious and listen to more experiences members.<br><br>Some rules that are very important for us: Firstly do not cross the line under the net when jumping, running etc. This is the main cause of injuries. Secondly try not to touch the net, we are not toos strict about this but touching the net mainly means you jump too far forward instead of up which can also cause injuries. The last rule we would like to enforce is to ask for tips or to be open to feedback. </p>						</div>
+					</li>
+					<li>
+						<img src="{% static 'website/images/blog-image2.png' %}" alt="">
+						<div>
+							<h1>Monday</h1>
+							<p>On mondays we have 4 courts because we share the gym with the students that are playing basketball.</p>
+						</div>
+					</li>
+					<li>
+						<img src="{% static 'website/images/blog-image3.png' %}" alt="">
+						<div>
+							<h1>wednesday</h1>
+							<p>On wednesdays we have the gym all to ourselves which means 6 courts. If there are less than 24 people signed up around 14:00 on the same wednesday then the coordinator will contact basketball and tell them they can come play at the gym tonight.</p>
+							<a href="wednesday" class="more">Wednesday</a>
+						</div>
+					</li>
+					<li>
+						<img src="{% static 'website/images/blog-image4.png' %}" alt="">
+						<div>
+							<h1>Taking your name off the list</h1>
+							<p>If you plan on not coming to volleyball anymore then please take your name off of the list. If the list is full it would be greatly appreciated to do this as soon as possible to make room for others who are in the waiting list.</p>
+							<a href="Remove" class="more">Unregister</a>
+						</div>
+					</li>
+				</ul>
+{% endblock %}

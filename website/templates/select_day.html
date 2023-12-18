@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %} Select which day {% endblock %}
+{% block content %}
+{% load static %}
+<div class="login-signup-container" height="200px">
+    <!-- Background Image -->
+    <img src="{% static 'website/images/everyone.jpg' %}" class="background-image" alt="Background">
+
+
+    <!-- Transparent White Box -->
+    <div class="transparent-box">
+        <!-- Login Form -->
+        <div class="form-container">
+            <h2>Select Day for Attendance</h2><br>
+                <form method="post" action="{% url 'select_day' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit Attendance</button>
+                </form>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-container">
+            <center>
+            {% if registered_days %}
+                <h4>Days you have registered for:</h4><br>
+                <ul class="no-bullets">
+                    {% for day in registered_days %}
+                        <li>{{ day }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </center>
+        </div>
+    </div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+{% endblock %}

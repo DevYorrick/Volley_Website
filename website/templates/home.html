@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'website/css/style.css' %}" type="text/css">
+	<title>{% block title %}Default Title{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'website/css/mobile.css' %}">
+	<script src="{% static 'website/js/mobile.js' %}" type="text/javascript"></script>
+	<link rel="icon" type="image/x-icon" href="{% static 'website/images/favicon.ico.png' %}">
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div id="navigation">
+				<span id="mobile-navigation">&nbsp;</span>
+				<a href="home" class="logo"><img src="{% static 'website/images/logo.png' %}" alt="" width="70px" height="50px"></a>
+				<ul id="menu">
+					<li>
+						<a href="{% url 'home' %}">Home</a>
+					</li>
+					<li>
+						<a href="{% url 'about' %}">About</a>
+					</li>
+					{% if user.is_authenticated %}
+						<li>
+							<a href="{% url 'attendance' %}">Attendance list</a>
+							<ul>
+								<li>
+									<a href="{% url 'select_day' %}">Sign up </a>
+								</li>
+								<li>
+									<a href="{% url 'attendance_list' selected_day='Monday' %}">Monday</a>
+								</li>
+								<li>
+									<a href="{% url 'attendance_list' selected_day='Wednesday' %}">Wednesday</a>
+								</li>
+								<li>
+									<a href="{% url 'attendance_list' selected_day='Friday' %}">Friday</a>
+								</li>
+							</ul>
+						</li> 
+					{% endif %}
+					<li>
+						<a href="{% url 'contact' %}">Contact</a>
+					</li>
+					{% if user.is_authenticated %}
+						<li>
+							<a href="{% url 'account' %}">Account</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{% url 'signup' %}">Sign Up/Login</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+		<div id="body" class="home">
+			<div class="flex-container">
+				<!-- Box 1 -->
+				<div class="flex-item_box1">
+					<img src="{% static 'website/images/bg_home.png' %}" >
+				</div>
+			
+				<!-- Box 2 -->
+				<div class="flex-item box2">
+					<h1>Volleyball organized by the HAN</h1>
+					<p>Every Monday, Wednesday and Friday we play volleyball together with students from the HAN and some other universities.<br>Joining volleyball is completely free! For more information feel free to contact the Coordinator or send a message in the whatsapp group chat.<br>
+						Press sign up to get started, after making an account hover over attendance list and select sign in, here you will be able to select which day you would like to join.<br>
+						People with all skill levels are welcome, we will just be playing some games with everyone and the focus is on having fun! Everyone can learn how to play.
+				</div>
+			
+				<!-- Box 3 -->
+				<div class="flex-item box3" >
+					<div class="box3-left">
+					<img src="{% static 'website/images/coordinator.jpeg' %}" alt="Left Image">
+					</div>
+					<div class="box3-right">
+					<h2>Coordinator<br></h2>
+					<p> My name is Yorrick<br>I have been the volleyball coordinator for 2 years now.<br> when I started I was a completely beginner and now I am a professional beginner.<br>
+						I like setting, serving and blocking. 
+					</p>
+					</div>
+				</div>
+			
+				<!-- Box 4 -->
+				<div class="flex-item box4">
+					<div class="box4-left">
+					<h3>Our photographers</h3><br>
+					<p>
+						Our three current students who take pictures every now and then are from left to right: Tarik, Bilal and Virag.<br>
+						Click on their name for a link to their instagram. Below is a link to our google drive.
+					</p>
+					</div>
+					<div class="box4-right" style="text-align: center;">
+						<img src="{% static 'website/images/volleyball.png' %}" alt="" width="50" height="50" style="margin-top: -75px; vertical-align: middle;">
+						<img src="{% static 'website/images/bilal.jpg' %}" alt="" width="125" height="125" style="margin-top: -75px; vertical-align: middle;">
+						<img src="{% static 'website/images/virag.jpg' %}" alt="" width="125" height="125" style="margin-top: -75px; vertical-align: middle;">
+					</div>
+				</div>
+			
+				<!-- Box 5 -->
+				<div class="flex-item box5">
+					<p>We play volleyball every Monday and Friday in the Kermisland gym and Wednesday in the Bethanien gym. Get started through the link.<a href="signup" class="more">Read More</a><br>
+						Important rules:<br>
+						1. Have fun<br>
+						2. Play safe! this means do not jump forward at the net, you are not allowed to touch the net or cross the line below the net(we want to prevent injuries)<br>
+						3. Respect everyone and listen to the coordinator. 
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<div class="connect">
+					<a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>
+					<a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">facebook</a>
+					<a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
+					<a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
+				</div>
+				<p>&copy; Made by Yorrick Reuser</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

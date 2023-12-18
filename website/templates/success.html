@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} Select which day {% endblock %}
+{% block content %}
+{% load static %}
+    <h1>Success</h1>
+    <p>Attendance record created successfully for user {{ user_instance.username }} on {{ selected_day }}.</p>
+    <!-- You can provide additional information or links here -->
+{% endblock %}
